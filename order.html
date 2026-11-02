@@ -6,9 +6,11 @@
     <title>Оформление заказа — Учебный интернет-магазин</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/accessibility.css">
     <script src="js/main.js" defer></script>
 </head>
-<body>
+<body id="top">
+<a class="skip-link" href="#main">Перейти к основному содержимому</a>
 <header class="site-header">
     <div class="site-header__inner">
         <a class="site-header__logo" href="index.html">ShopProject</a>
@@ -16,7 +18,7 @@
             <ul class="site-nav__list">
                 <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
                 <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
-                <li class="site-nav__item"><a class="site-nav__link" href="order.html">Оформление</a></li>
+                <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="order.html" aria-current="page">Оформление</a></li>
                 <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
                 <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
                 <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
@@ -24,16 +26,17 @@
         </nav>
     </div>
 </header>
-
-<main>
+<main id="main" tabindex="-1">
     <nav class="breadcrumbs" aria-label="Хлебные крошки">
         <a class="breadcrumbs__link" href="index.html">Главная</a>
-        <span class="breadcrumbs__current">Оформление заказа</span>
+        <span class="breadcrumbs__current" aria-current="page">Оформление заказа</span>
     </nav>
     <section class="section">
         <h1>Оформление заказа</h1>
         <p>Заполните форму ниже.</p>
         <form class="order-form order-form--page" style="max-width: 600px; margin: var(--space-lg) 0;" action="#" method="post">
+        <p class="form-note">Обязательные поля: имя, e-mail, телефон, тема заявки и согласие на обработку данных.</p>
+        <p class="form-errors" role="alert" hidden></p>
             <div class="order-form__field">
                 <label class="order-form__label" for="page-order-name">Имя</label>
                 <input class="order-form__input" id="page-order-name" name="name" type="text" placeholder="Введите ваше имя" minlength="2" autocomplete="given-name" required>
@@ -44,8 +47,8 @@
             </div>
             <div class="order-form__field">
                 <label class="order-form__label" for="page-order-phone">Телефон</label>
-                <input class="order-form__input" id="page-order-phone" name="phone" type="tel" inputmode="tel" placeholder="+7 (900) 000-00-00" pattern="[+]7 [(][0-9]{3}[)] [0-9]{3}&#45;[0-9]{2}&#45;[0-9]{2}" required>
-                <small>Формат: +7 (900) 000-00-00</small>
+                <input class="order-form__input" id="page-order-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7 (900) 000-00-00" pattern="[+]7 [(][0-9]{3}[)] [0-9]{3}&#45;[0-9]{2}&#45;[0-9]{2}" required aria-describedby="page-order-phone-hint">
+                <small id="page-order-phone-hint">Формат: +7 (900) 000-00-00</small>
             </div>
             <div class="order-form__field">
                 <label class="order-form__label" for="page-order-date">Дата связи</label>
@@ -66,7 +69,7 @@
             </div>
             <div class="order-form__field order-form__field--checkbox">
                 <label class="order-form__label">
-                    <input class="order-form__input" name="agreement" type="checkbox" required style="width: auto;">
+                    <input class="order-form__input" id="page-order-agreement" name="agreement" type="checkbox" required style="width: auto;">
                     Я согласен на обработку персональных данных
                 </label>
             </div>
@@ -74,14 +77,13 @@
                 <button class="button button--primary" type="submit" style="font-size: 16px; padding: 12px 24px;">Подтвердить заказ</button>
             </div>
         </form>
-        <p class="success-message" id="success-message" role="status" hidden>Заявка проверена. Это учебная форма: данные на сервер не отправляются.</p>
+        <p class="success-message" id="success-message" role="status" aria-live="polite" aria-atomic="true"></p>
     </section>
 </main>
-
 <footer>
     <p>&copy; 2026 Учебный проект. Все права защищены.</p>
     <p>Дисциплина: Фронтенд и бэкенд разработка</p>
 </footer>
-<a href="#" class="button-up">Наверх ⬆</a>
+<a href="#top" class="button-up">Наверх ⬆</a>
 </body>
 </html>
