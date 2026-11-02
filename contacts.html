@@ -7,12 +7,15 @@
     <title>Контакты — Учебный интернет-магазин</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/accessibility.css">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Учебный интернет-магазин">
     <meta property="og:description" content="Учебный frontend-проект интернет-магазина.">
     <meta property="og:image" content="https://Al3xKhrom.github.io/kr1-html-css-shop/images/preview.jpg">
+    <script src="js/main.js" defer></script>
 </head>
-<body>
+<body id="top">
+<a class="skip-link" href="#main">Перейти к основному содержимому</a>
 <header class="site-header">
     <div class="site-header__inner">
         <a class="site-header__logo" href="index.html">ShopProject</a>
@@ -21,17 +24,17 @@
                 <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
                 <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
                 <li class="site-nav__item"><a class="site-nav__link" href="order.html">Оформление</a></li>
-                <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+                <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="contacts.html" aria-current="page">Контакты</a></li>
                 <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
                 <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
             </ul>
         </nav>
     </div>
 </header>
-<main>
+<main id="main" tabindex="-1">
     <nav class="breadcrumbs" aria-label="Хлебные крошки">
         <a class="breadcrumbs__link" href="index.html">Главная</a>
-        <span class="breadcrumbs__current">Контакты</span>
+        <span class="breadcrumbs__current" aria-current="page">Контакты</span>
     </nav>
     <section class="section">
         <h1>Контакты</h1>
