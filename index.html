@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог товаров</title>
+    <title>Главная — Учебный интернет-магазин</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <script src="js/main.js" defer></script>
@@ -30,7 +30,7 @@
 </header>
 <main>
     <section class="hero">
-        <h1>Учебный интернет-магазин техники</h1>
+        <h1 class="hero__title">Учебный интернет-магазин техники</h1>
         <p>
             Это стартовая страница учебного frontend-проекта.
             В дальнейшем на её основе будет разработан многостраничный сайт
@@ -42,49 +42,43 @@
         <h2>Популярные товары</h2>
         <div class="products-grid">
             <article class="product-card">
-                <img class="product-card__image" src="images/product-1.jpg" alt="Беспроводные наушники">
+                <img class="product-card__image" src="images/product-1.jpg" alt="Беспроводные наушники" srcset="images/product-1-100.jpg 100w, images/product-1.jpg 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 166px) / 3), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="200" loading="lazy">
                 <span class="product-card__badge">Хит продаж</span>
                 <h3 class="product-card__title">Наушники воздушные капсулы про</h3>
                 <p class="product-card__description">Беспроводные наушники с активным шумоподавлением от внешнего мира.</p>
                 <p class="product-card__price">Цена: 5000 руб.</p>
-                <div style="margin-top: auto; display: flex; gap: 10px;">
+                <div class="product-card__actions">
                     <button class="button button--primary product-card__button" type="button" data-product="Беспроводные наушники" style="margin-top: 0;">Заказать</button>
                     <a class="button button--secondary" href="product.html">Подробнее</a>
+            </div>
             </article>
             <article class="product-card">
-                <img class="product-card__image" src="images/product-2.jpg" alt="Игровая станция 5">
+                <img class="product-card__image" src="images/product-2.jpg" alt="Игровая станция 5" srcset="images/product-2-100.jpg 100w, images/product-2.jpg 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 166px) / 3), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="200" loading="lazy">
                 <span class="product-card__badge">Хит продаж</span>
                 <h3 class="product-card__title">Игровая станция 5</h3>
                 <p class="product-card__description">Игровая станция. Идеальный вариант для гта 6.</p>
                 <p class="product-card__price">Цена: 120000 руб.</p>
-                <div style="margin-top: auto; display: flex; gap: 10px;">
+                <div class="product-card__actions">
                     <button class="button button--primary product-card__button" type="button" data-product="Игровая станция 5" style="margin-top: 0;">Заказать</button>
                     <a class="button button--secondary" href="product.html">Подробнее</a>
+            </div>
             </article>
             <article class="product-card">
 
                 <img
                         src="images/product-3.jpg"
-                        srcset="images/product-3.jpg 480w,
-          images/product-3.jpg 640w,
-          images/product-3.jpg 960w"
-                        sizes="(max-width: 639px) 100vw,
-         (max-width: 1023px) 50vw,
-         33vw"
-                        alt="Товар 1"
-                        width="640"
-                        height="480"
-                        loading="lazy"
+                        alt="Микрофон"
                         class="product-card__image"
-                >
+                 srcset="images/product-3-100.jpg 100w, images/product-3.jpg 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 166px) / 3), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="200" loading="lazy">
 
                 <span class="product-card__badge">Хит продаж</span>
                 <h3 class="product-card__title">Микрофон (не китайский) </h3>
                 <p class="product-card__description">Мощный и крутой микрофон. Выбор стримеров и блогеров.</p>
                 <p class="product-card__price">Цена: 8000 руб.</p>
-                <div style="margin-top: auto; display: flex; gap: 10px;">
+                <div class="product-card__actions">
                     <button class="button button--primary product-card__button" type="button" data-product="Микрофон" style="margin-top: 0;">Заказать</button>
                     <a class="button button--secondary" href="product.html">Подробнее</a>
+            </div>
             </article>
         </div>
     </section>
@@ -148,7 +142,7 @@
                     type="tel"
                     inputmode="tel"
                     placeholder="+7 (900) 000-00-00"
-                    pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+                    pattern="[+]7 [(][0-9]{3}[)] [0-9]{3}&#45;[0-9]{2}&#45;[0-9]{2}"
                     required
             >
             <small>Формат: +7 (900) 000-00-00</small>
@@ -203,8 +197,8 @@
         </div>
     </form>
 </dialog>
-<p class="success-message" id="success-message" hidden>
-    Форма успешно отправлена!
+<p class="success-message" id="success-message" role="status" hidden>
+    Заявка проверена. Это учебная форма: данные на сервер не отправляются.
 </p>
 </body>
 </html>

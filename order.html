@@ -6,6 +6,7 @@
     <title>Оформление заказа — Учебный интернет-магазин</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/main.js" defer></script>
 </head>
 <body>
 <header class="site-header">
@@ -32,7 +33,7 @@
     <section class="section">
         <h1>Оформление заказа</h1>
         <p>Заполните форму ниже.</p>
-        <form class="order-form" style="max-width: 600px; margin: var(--space-lg) 0;" action="#" method="post">
+        <form class="order-form order-form--page" style="max-width: 600px; margin: var(--space-lg) 0;" action="#" method="post">
             <div class="order-form__field">
                 <label class="order-form__label" for="page-order-name">Имя</label>
                 <input class="order-form__input" id="page-order-name" name="name" type="text" placeholder="Введите ваше имя" minlength="2" autocomplete="given-name" required>
@@ -43,7 +44,7 @@
             </div>
             <div class="order-form__field">
                 <label class="order-form__label" for="page-order-phone">Телефон</label>
-                <input class="order-form__input" id="page-order-phone" name="phone" type="tel" inputmode="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+                <input class="order-form__input" id="page-order-phone" name="phone" type="tel" inputmode="tel" placeholder="+7 (900) 000-00-00" pattern="[+]7 [(][0-9]{3}[)] [0-9]{3}&#45;[0-9]{2}&#45;[0-9]{2}" required>
                 <small>Формат: +7 (900) 000-00-00</small>
             </div>
             <div class="order-form__field">
@@ -73,6 +74,7 @@
                 <button class="button button--primary" type="submit" style="font-size: 16px; padding: 12px 24px;">Подтвердить заказ</button>
             </div>
         </form>
+        <p class="success-message" id="success-message" role="status" hidden>Заявка проверена. Это учебная форма: данные на сервер не отправляются.</p>
     </section>
 </main>
 
