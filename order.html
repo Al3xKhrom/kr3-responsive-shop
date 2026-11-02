@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформление заказа — Учебный интернет-магазин</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="site-header__inner">
+        <a class="site-header__logo" href="index.html">ShopProject</a>
+        <nav class="site-nav" aria-label="Основная навигация">
+            <ul class="site-nav__list">
+                <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="order.html">Оформление</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+        <a class="breadcrumbs__link" href="index.html">Главная</a>
+        <span class="breadcrumbs__current">Оформление заказа</span>
+    </nav>
+    <section class="section">
+        <h1>Оформление заказа</h1>
+        <p>Заполните форму ниже.</p>
+        <form class="order-form" style="max-width: 600px; margin: var(--space-lg) 0;" action="#" method="post">
+            <div class="order-form__field">
+                <label class="order-form__label" for="page-order-name">Имя</label>
+                <input class="order-form__input" id="page-order-name" name="name" type="text" placeholder="Введите ваше имя" minlength="2" autocomplete="given-name" required>
+            </div>
+            <div class="order-form__field">
+                <label class="order-form__label" for="page-order-email">E-mail</label>
+                <input class="order-form__input" id="page-order-email" name="email" type="email" placeholder="example@mail.ru" autocomplete="email" required>
+            </div>
+            <div class="order-form__field">
+                <label class="order-form__label" for="page-order-phone">Телефон</label>
+                <input class="order-form__input" id="page-order-phone" name="phone" type="tel" inputmode="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+                <small>Формат: +7 (900) 000-00-00</small>
+            </div>
+            <div class="order-form__field">
+                <label class="order-form__label" for="page-order-date">Дата связи</label>
+                <input class="order-form__input" id="page-order-date" name="date" type="date">
+            </div>
+            <div class="order-form__field">
+                <label class="order-form__label" for="page-order-topic">Тема заявки</label>
+                <select class="order-form__select" id="page-order-topic" name="topic" required>
+                    <option value="">Выберите тему</option>
+                    <option value="product">Заказ товара</option>
+                    <option value="consultation">Консультация</option>
+                    <option value="delivery">Доставка</option>
+                </select>
+            </div>
+            <div class="order-form__field">
+                <label class="order-form__label" for="page-order-comment">Комментарий к заказу</label>
+                <textarea class="order-form__textarea" id="page-order-comment" name="comment" rows="4" placeholder="Укажите адрес доставки или дополнительные пожелания"></textarea>
+            </div>
+            <div class="order-form__field order-form__field--checkbox">
+                <label class="order-form__label">
+                    <input class="order-form__input" name="agreement" type="checkbox" required style="width: auto;">
+                    Я согласен на обработку персональных данных
+                </label>
+            </div>
+            <div class="order-form__actions">
+                <button class="button button--primary" type="submit" style="font-size: 16px; padding: 12px 24px;">Подтвердить заказ</button>
+            </div>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 Учебный проект. Все права защищены.</p>
+    <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+</footer>
+<a href="#" class="button-up">Наверх ⬆</a>
+</body>
+</html>

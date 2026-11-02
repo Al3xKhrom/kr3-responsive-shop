@@ -1,0 +1,11 @@
+*   [33mec3e979[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Merge pull request #3 from Al3xKhrom/feature/form-modal-validation
+[31m|[m[32m\[m  
+[31m|[m * [33m3fc266c[m[33m ([m[1;31morigin/feature/form-modal-validation[m[33m, [m[1;32mfeature/form-modal-validation[m[33m)[m feat: add order form modal and validation
+[31m|[m[31m/[m  
+*   [33m14409f2[m Merge pull request #2 from Al3xKhrom/feature/html-css-start-page
+[33m|[m[34m\[m  
+[33m|[m * [33mef8c4ba[m[33m ([m[1;31morigin/feature/html-css-start-page[m[33m, [m[1;32mfeature/html-css-start-page[m[33m)[m feat: add semantic HTML structure and base CSS styles
+[33m|[m[33m/[m  
+* [33m3c90787[m docs: add GitHub Pages link
+* [33m991fa38[m docs: add project status to README
+* [33m238e63d[m feat: initialize frontend project sctructure
