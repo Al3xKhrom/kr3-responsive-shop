@@ -14,7 +14,8 @@
 <header class="site-header">
     <div class="site-header__inner">
         <a class="site-header__logo" href="index.html">ShopProject</a>
-        <nav class="site-nav" aria-label="Основная навигация">
+        <button class="button button--secondary menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" hidden>Меню</button>
+        <nav id="site-menu" class="site-nav" aria-label="Основная навигация">
             <ul class="site-nav__list">
                 <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
                 <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
@@ -35,13 +36,17 @@
     <section class="section">
         <div class="product-layout">
             <div class="product-layout__image">
-                <img src="images/product-1.jpg" alt="Наушники воздушные капсулы про" style="width: 100%; max-width: 450px; border-radius: var(--radius-md); box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: block; margin: 0 auto;" srcset="images/product-1-100.jpg 100w, images/product-1.jpg 200w" sizes="(min-width: 1024px) 450px, calc(100vw - 32px)" width="200" height="200">
+                <picture>
+                    <source type="image/webp" srcset="images/product-1-100.webp 100w, images/product-1.webp 200w" sizes="(min-width: 1024px) 450px, calc(100vw - 32px)">
+                    <img src="images/product-1.jpg" alt="Наушники воздушные капсулы про" style="width: 100%; max-width: 450px; border-radius: var(--radius-md); box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: block; margin: 0 auto;" srcset="images/product-1-100.jpg 100w, images/product-1.jpg 200w" sizes="(min-width: 1024px) 450px, calc(100vw - 32px)" width="200" height="200">
+                </picture>
             </div>
             <div class="product-layout__info">
                 <h1 style="margin-top: 0;">Наушники воздушные капсулы про</h1>
                 <p class="product-card__price" style="font-size: 24px; color: var(--color-primary);">5 000 руб.</p>
                 <p>Беспроводные наушники с активным шумоподавлением от внешнего мира. Идеальный выбор для повседневного прослушивания музыки и звонков.</p>
-                <div class="table-wrapper" tabindex="0" role="region" aria-label="Характеристики товара — горизонтальная прокрутка">
+                <section class="mobile-specs" aria-labelledby="mobile-specs-title"><h2 id="mobile-specs-title">Характеристики товара</h2><dl><div><dt>Тип</dt><dd>Беспроводные (Bluetooth 5.0)</dd></div><div><dt>Шумоподавление</dt><dd>Активное (ANC)</dd></div><div><dt>Время работы</dt><dd>До 24 часов с кейсом</dd></div><div><dt>Гарантия</dt><dd>1 год</dd></div></dl></section>
+                <div class="table-wrapper desktop-specs" tabindex="0" role="region" aria-label="Характеристики товара — горизонтальная прокрутка">
                 <table class="product-table">
                     <caption>Характеристики товара</caption>
                     <thead>

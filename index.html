@@ -11,14 +11,14 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Учебный интернет-магазин">
     <meta property="og:description" content="Учебный frontend-проект интернет-магазина.">
-    <meta property="og:image" content="https://Al3xKhrom.github.io/kr1-html-css-shop/images/preview.jpg">
 </head>
 <body id="top">
 <a class="skip-link" href="#main">Перейти к основному содержимому</a>
 <header class="site-header">
     <div class="site-header__inner">
         <a class="site-header__logo" href="index.html">ShopProject</a>
-        <nav class="site-nav" aria-label="Основная навигация">
+        <button class="button button--secondary menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" hidden>Меню</button>
+        <nav id="site-menu" class="site-nav" aria-label="Основная навигация">
             <ul class="site-nav__list">
                 <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="index.html" aria-current="page">Главная</a></li>
                 <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
@@ -44,7 +44,10 @@
         <h2>Популярные товары</h2>
         <div class="products-grid">
             <article class="product-card">
-                <img class="product-card__image" src="images/product-1.jpg" alt="Беспроводные наушники" srcset="images/product-1-100.jpg 100w, images/product-1.jpg 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 166px) / 3), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="200" loading="lazy">
+                <picture>
+                    <source type="image/webp" srcset="images/product-1-100.webp 100w, images/product-1.webp 200w" sizes="(min-width: 1232px) 355px, (min-width: 1024px) calc((100vw - 166px) / 3), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)">
+                    <img class="product-card__image" src="images/product-1.jpg" alt="Беспроводные наушники" srcset="images/product-1-100.jpg 100w, images/product-1.jpg 200w" sizes="(min-width: 1232px) 355px, (min-width: 1024px) calc((100vw - 166px) / 3), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="200" loading="lazy">
+                </picture>
                 <span class="product-card__badge">Хит продаж</span>
                 <h3 class="product-card__title">Наушники воздушные капсулы про</h3>
                 <p class="product-card__description">Беспроводные наушники с активным шумоподавлением от внешнего мира.</p>
@@ -55,7 +58,10 @@
             </div>
             </article>
             <article class="product-card">
-                <img class="product-card__image" src="images/product-2.jpg" alt="Игровая станция 5" srcset="images/product-2-100.jpg 100w, images/product-2.jpg 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 166px) / 3), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="200" loading="lazy">
+                <picture>
+                    <source type="image/webp" srcset="images/product-2-100.webp 100w, images/product-2.webp 200w" sizes="(min-width: 1232px) 355px, (min-width: 1024px) calc((100vw - 166px) / 3), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)">
+                    <img class="product-card__image" src="images/product-2.jpg" alt="Игровая станция 5" srcset="images/product-2-100.jpg 100w, images/product-2.jpg 200w" sizes="(min-width: 1232px) 355px, (min-width: 1024px) calc((100vw - 166px) / 3), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="200" loading="lazy">
+                </picture>
                 <span class="product-card__badge">Хит продаж</span>
                 <h3 class="product-card__title">Игровая станция 5</h3>
                 <p class="product-card__description">Игровая станция. Идеальный вариант для гта 6.</p>
@@ -67,11 +73,14 @@
             </article>
             <article class="product-card">
 
-                <img
+                <picture>
+                    <source type="image/webp" srcset="images/product-3-100.webp 100w, images/product-3.webp 200w" sizes="(min-width: 1232px) 355px, (min-width: 1024px) calc((100vw - 166px) / 3), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)">
+                    <img
                         src="images/product-3.jpg"
                         alt="Микрофон"
                         class="product-card__image"
-                 srcset="images/product-3-100.jpg 100w, images/product-3.jpg 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 166px) / 3), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="200" loading="lazy">
+                 srcset="images/product-3-100.jpg 100w, images/product-3.jpg 200w" sizes="(min-width: 1232px) 355px, (min-width: 1024px) calc((100vw - 166px) / 3), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="200" loading="lazy">
+                </picture>
 
                 <span class="product-card__badge">Хит продаж</span>
                 <h3 class="product-card__title">Микрофон (не китайский) </h3>

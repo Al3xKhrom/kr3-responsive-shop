@@ -107,3 +107,81 @@ document.querySelectorAll('.order-form').forEach((form) => {
         if (message) message.textContent = 'Заявка проверена. Это учебная форма: данные на сервер не отправляются.';
     });
 });
+
+// При выключенном JavaScript меню остаётся доступным целиком.
+const menuButton = document.querySelector('.menu-toggle');
+const menu = document.getElementById('site-menu');
+const wideMenu = window.matchMedia('(min-width: 768px)');
+function setMenu(open) {
+    menu.hidden = !open;
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.textContent = open ? 'Закрыть меню' : 'Меню';
+}
+function syncMenu() {
+    const focusInside = menu.contains(document.activeElement);
+    const focusButton = document.activeElement === menuButton;
+    menuButton.hidden = wideMenu.matches;
+    setMenu(wideMenu.matches);
+    if (!wideMenu.matches && focusInside) menuButton.focus();
+    if (wideMenu.matches && focusButton) menu.querySelector('a')?.focus();
+}
+if (menuButton && menu) {
+    syncMenu();
+    wideMenu.addEventListener('change', syncMenu);
+    menuButton.addEventListener('click', () => setMenu(menu.hidden));
+    menu.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !wideMenu.matches) {
+            setMenu(false);
+            menuButton.focus();
+        }
+    });
+}
+const filterDetails = document.querySelector('.filter-disclosure');
+if (filterDetails) {
+    const wideFilters = window.matchMedia('(min-width: 1024px)');
+    const syncFilters = () => {
+        const focusInside = filterDetails.contains(document.activeElement);
+        filterDetails.open = wideFilters.matches;
+        if (!wideFilters.matches && focusInside) filterDetails.querySelector('summary').focus();
+    };
+    syncFilters();
+    wideFilters.addEventListener('change', syncFilters);
+    const filterForm = document.querySelector('.filters-form');
+    const cards = Array.from(document.querySelectorAll('.catalog-products .product-card'));
+    const low = document.getElementById('price-from');
+    const high = document.getElementById('price-to');
+    const category = document.getElementById('filter-category');
+    const error = document.getElementById('filter-error');
+    low.setAttribute('aria-describedby', 'filter-error');
+    high.setAttribute('aria-describedby', 'filter-error');
+    function clearError() {
+        error.hidden = true;
+        error.textContent = '';
+        low.removeAttribute('aria-invalid');
+        high.removeAttribute('aria-invalid');
+    }
+    [low, high].forEach((field) => field.addEventListener('input', clearError));
+    function applyFilters() {
+        clearError();
+        const min = low.value === '' ? 0 : Number(low.value);
+        const max = high.value === '' ? Infinity : Number(high.value);
+        if (min > max) {
+            error.textContent = 'Цена «От» не должна быть больше цены «До».';
+            error.hidden = false;
+            low.setAttribute('aria-invalid', 'true');
+            low.focus();
+            return;
+        }
+        let count = 0;
+        cards.forEach((card) => {
+            const match = (category.value === 'all' || card.dataset.category === category.value)
+                && Number(card.dataset.price) >= min && Number(card.dataset.price) <= max;
+            card.hidden = !match;
+            if (match) count++;
+        });
+        document.getElementById('filter-status').textContent = `Найдено товаров: ${count}`;
+        document.getElementById('filter-empty').hidden = count > 0;
+    }
+    filterForm.addEventListener('submit', (event) => { event.preventDefault(); applyFilters(); });
+    filterForm.addEventListener('reset', () => setTimeout(applyFilters, 0));
+}

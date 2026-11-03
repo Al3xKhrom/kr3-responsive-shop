@@ -11,7 +11,6 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Учебный интернет-магазин">
     <meta property="og:description" content="Учебный frontend-проект интернет-магазина.">
-    <meta property="og:image" content="https://Al3xKhrom.github.io/kr1-html-css-shop/images/preview.jpg">
     <script src="js/main.js" defer></script>
 </head>
 <body id="top">
@@ -19,7 +18,8 @@
 <header class="site-header">
     <div class="site-header__inner">
         <a class="site-header__logo" href="index.html">ShopProject</a>
-        <nav class="site-nav" aria-label="Основная навигация">
+        <button class="button button--secondary menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" hidden>Меню</button>
+        <nav id="site-menu" class="site-nav" aria-label="Основная навигация">
             <ul class="site-nav__list">
                 <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
                 <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
@@ -42,17 +42,24 @@
             Здесь размещается контактная информация учебного интернет-магазина.
         </p>
         <ul>
-            <li>Телефон: +7 (900) 000-00-00</li>
-            <li>E-mail: info@example.com</li>
+            <li>Телефон: <a href="tel:+79000000000">+7 (900) 000-00-00</a></li>
+            <li>E-mail: <a href="mailto:info@example.com">info@example.com</a></li>
             <li>Адрес: г. Москва, учебный проект</li>
         </ul>
     </section>
     <section class="section" id="feedback">
         <h2>Обратная связь</h2>
-        <p>
-            Для отправки заявки перейдите на страницу оформления.
-        </p>
-        <a class="button" href="order.html">Перейти к форме</a>
+        <p>Напишите вопрос о товаре или доставке. Форма учебная, данные на сервер не отправляются.</p>
+        <form class="order-form order-form--page feedback-form" action="#" method="post">
+            <p class="form-note">Все поля обязательны.</p>
+            <p class="form-errors" role="alert" hidden></p>
+            <div class="order-form__field"><label class="order-form__label" for="feedback-name">Имя</label><input class="order-form__input" id="feedback-name" name="name" autocomplete="given-name" minlength="2" required></div>
+            <div class="order-form__field"><label class="order-form__label" for="feedback-email">E-mail</label><input class="order-form__input" id="feedback-email" name="email" type="email" autocomplete="email" required></div>
+            <div class="order-form__field"><label class="order-form__label" for="feedback-message">Сообщение</label><textarea class="order-form__textarea" id="feedback-message" name="message" rows="5" required></textarea></div>
+            <div class="order-form__field order-form__field--checkbox"><label class="order-form__label" for="feedback-agreement"><input class="order-form__input" type="checkbox" id="feedback-agreement" name="agreement" required>Я согласен на обработку данных</label></div>
+            <div class="order-form__actions"><button class="button button--primary" type="submit">Отправить сообщение</button></div>
+        </form>
+        <p class="success-message" id="success-message" role="status" aria-live="polite" aria-atomic="true"></p>
     </section>
 </main>
 <footer>

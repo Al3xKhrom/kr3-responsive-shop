@@ -12,14 +12,14 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Учебный интернет-магазин">
     <meta property="og:description" content="Учебный frontend-проект интернет-магазина.">
-    <meta property="og:image" content="https://Al3xKhrom.github.io/kr1-html-css-shop/images/preview.jpg">
 </head>
 <body id="top">
 <a class="skip-link" href="#main">Перейти к основному содержимому</a>
 <header class="site-header">
     <div class="site-header__inner">
         <a class="site-header__logo" href="index.html">ShopProject</a>
-        <nav class="site-nav" aria-label="Основная навигация">
+        <button class="button button--secondary menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" hidden>Меню</button>
+        <nav id="site-menu" class="site-nav" aria-label="Основная навигация">
             <ul class="site-nav__list">
                 <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
                 <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="catalog.html" aria-current="page">Каталог</a></li>
@@ -39,30 +39,18 @@
     <section class="section">
         <h1>Каталог товаров</h1>
         <p>
-            На этой странице представлен учебный каталог товаров.
-            В дальнейшем здесь будут добавлены фильтры, сортировка и более
-            подробные карточки.
+            Выберите категорию и диапазон цены. На телефоне фильтры открываются по нажатию.
         </p>
     </section>
     <section class="catalog-layout">
         <aside class="catalog-filters">
-            <h2>Фильтры</h2>
+            <details class="filter-disclosure"><summary>Фильтры каталога</summary>
             <form class="filters-form" action="#" method="get">
-                <fieldset>
-                    <legend>Категория</legend>
-                    <label>
-                        <input type="checkbox" name="category" value="all">
-                        Все товары
-                    </label>
-                    <label>
-                        <input type="checkbox" name="category" value="popular">
-                        Популярные
-                    </label>
-                    <label>
-                        <input type="checkbox" name="category" value="new">
-                        Новинки
-                    </label>
-                </fieldset>
+                <fieldset><legend>Категория</legend>
+                    <label for="filter-category">Тип товара</label>
+                    <select id="filter-category" name="category" class="order-form__select">
+                        <option value="all">Все товары</option><option value="audio">Аудиотехника</option><option value="console">Игровые консоли</option><option value="accessory">Аксессуары</option>
+                    </select></fieldset>
                 <fieldset>
                     <legend>Цена</legend>
                     <label for="price-from">От</label>
@@ -70,14 +58,22 @@
                     <label for="price-to">До</label>
                     <input id="price-to" name="price-to" type="number" min="0" placeholder="5000">
                 </fieldset>
-                <button class="button" type="submit">Применить</button>
+                <p id="filter-error" class="form-errors" role="alert" hidden></p>
+                <button class="button button--primary" type="submit">Применить</button>
+                <button class="button button--secondary" type="reset">Сбросить</button>
             </form>
+            </details>
         </aside>
         <section class="catalog-products">
             <h2>Список товаров</h2>
+            <p id="filter-status" role="status" aria-live="polite">Найдено товаров: 9</p>
+            <p id="filter-empty" hidden>Ничего не найдено. Измените фильтры или нажмите «Сбросить».</p>
             <div class="products-grid">
-            <article class="product-card">
-                <img class="product-card__image" src="images/product-1.jpg" alt="Беспроводные наушники" srcset="images/product-1-100.jpg 100w, images/product-1.jpg 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="200" loading="lazy">
+            <article class="product-card" data-category="audio" data-price="5000">
+                <picture>
+                    <source type="image/webp" srcset="images/product-1-100.webp 100w, images/product-1.webp 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)">
+                    <img class="product-card__image" src="images/product-1.jpg" alt="Беспроводные наушники" srcset="images/product-1-100.jpg 100w, images/product-1.jpg 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="200" loading="lazy">
+                </picture>
                 <h3 class="product-card__title">Наушники воздушные капсулы про</h3>
                 <p class="product-card__description">Беспроводные наушники с активным шумоподавлением от внешнего мира.</p>
                 <p class="product-card__price">Цена: 5000 руб.</p>
@@ -86,8 +82,11 @@
                     <a class="button button--secondary" href="product.html" aria-label="Подробнее о наушниках">Подробнее</a>
             </div>
             </article>
-            <article class="product-card">
-                <img class="product-card__image" src="images/product-2.jpg" alt="Игровая станция 5" srcset="images/product-2-100.jpg 100w, images/product-2.jpg 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="200" loading="lazy">
+            <article class="product-card" data-category="console" data-price="120000">
+                <picture>
+                    <source type="image/webp" srcset="images/product-2-100.webp 100w, images/product-2.webp 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)">
+                    <img class="product-card__image" src="images/product-2.jpg" alt="Игровая станция 5" srcset="images/product-2-100.jpg 100w, images/product-2.jpg 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="200" loading="lazy">
+                </picture>
                 <h3 class="product-card__title">Игровая станция 5</h3>
                 <p class="product-card__description">Игровая станция. Идеальный вариант для гта 6.</p>
                 <p class="product-card__price">Цена: 120000 руб.</p>
@@ -96,8 +95,11 @@
                     <a class="button button--secondary" href="order.html" aria-label="Оформить заявку: Игровая станция 5">Оформить</a>
             </div>
             </article>
-            <article class="product-card">
-                <img class="product-card__image" src="images/product-3.jpg" alt="Микрофон" srcset="images/product-3-100.jpg 100w, images/product-3.jpg 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="200" loading="lazy">
+            <article class="product-card" data-category="audio" data-price="8000">
+                <picture>
+                    <source type="image/webp" srcset="images/product-3-100.webp 100w, images/product-3.webp 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)">
+                    <img class="product-card__image" src="images/product-3.jpg" alt="Микрофон" srcset="images/product-3-100.jpg 100w, images/product-3.jpg 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="200" loading="lazy">
+                </picture>
                 <h3 class="product-card__title">Микрофон (не китайский) </h3>
                 <p class="product-card__description">Мощный и крутой микрофон. Выбор стримеров и блогеров.</p>
                 <p class="product-card__price">Цена: 8000 руб.</p>
@@ -106,8 +108,11 @@
                     <a class="button button--secondary" href="order.html" aria-label="Оформить заявку: Микрофон (не китайский)">Оформить</a>
             </div>
             </article>
-                <article class="product-card">
+                <article class="product-card" data-category="console" data-price="40000">
+                    <picture>
+                    <source type="image/webp" srcset="images/product-4-100.webp 100w, images/product-4.webp 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)">
                     <img class="product-card__image" src="images/product-4.jpg" alt="Игровая консоль Х коробка" srcset="images/product-4-100.jpg 100w, images/product-4.jpg 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="200" loading="lazy">
+                </picture>
                     <h3 class="product-card__title">Х коробка</h3>
                     <p class="product-card__description">Игровая консоль для игр.</p>
                     <p class="product-card__price">Цена: 40000 руб.</p>
@@ -116,8 +121,11 @@
                         <a class="button button--secondary" href="order.html" aria-label="Оформить заявку: Х коробка">Оформить</a>
                 </div>
                 </article>
-                <article class="product-card">
+                <article class="product-card" data-category="console" data-price="65000">
+                    <picture>
+                    <source type="image/webp" srcset="images/product-5-100.webp 100w, images/product-5.webp 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)">
                     <img class="product-card__image" src="images/product-5.jpg" alt="Нинтендо переключатель 2" srcset="images/product-5-100.jpg 100w, images/product-5.jpg 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="112" loading="lazy">
+                </picture>
                     <h3 class="product-card__title">Нинтендо переключатель 2</h3>
                     <p class="product-card__description">Портативная игровая станция для фанатов покемонов и зельды.</p>
                     <p class="product-card__price">Цена: 65000 руб.</p>
@@ -126,8 +134,11 @@
                         <a class="button button--secondary" href="order.html" aria-label="Оформить заявку: Нинтендо переключатель 2">Оформить</a>
                 </div>
                 </article>
-                <article class="product-card">
+                <article class="product-card" data-category="accessory" data-price="7000">
+                    <picture>
+                    <source type="image/webp" srcset="images/product-6-100.webp 100w, images/product-6.webp 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)">
                     <img class="product-card__image" src="images/product-6.jpg" alt="Игровой контроллер" srcset="images/product-6-100.jpg 100w, images/product-6.jpg 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="156" loading="lazy">
+                </picture>
                     <h3 class="product-card__title">Рычаг управления</h3>
                     <p class="product-card__description">Рычаг управления для игровой станции 4.</p>
                     <p class="product-card__price">Цена: 7000 руб.</p>
@@ -136,8 +147,11 @@
                         <a class="button button--secondary" href="order.html" aria-label="Оформить заявку: Рычаг управления">Оформить</a>
                 </div>
                 </article>
-                <article class="product-card">
-                <img class="product-card__image" src="images/product-7.jpg" alt="Игровая станция 4" srcset="images/product-7-100.jpg 100w, images/product-7.jpg 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="86" loading="lazy">
+                <article class="product-card" data-category="console" data-price="35000">
+                <picture>
+                    <source type="image/webp" srcset="images/product-7-100.webp 100w, images/product-7.webp 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)">
+                    <img class="product-card__image" src="images/product-7.jpg" alt="Игровая станция 4" srcset="images/product-7-100.jpg 100w, images/product-7.jpg 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="86" loading="lazy">
+                </picture>
                 <h3 class="product-card__title">Игровая станция 4</h3>
                 <p class="product-card__description">Игровая станция. НЕ идеальный вариант для гта 6.</p>
                 <p class="product-card__price">Цена: 35000 руб.</p>
@@ -146,8 +160,11 @@
                         <a class="button button--secondary" href="order.html" aria-label="Оформить заявку: Игровая станция 4">Оформить</a>
             </div>
             </article>
-                <article class="product-card">
+                <article class="product-card" data-category="audio" data-price="2000">
+                    <picture>
+                    <source type="image/webp" srcset="images/product-8-100.webp 100w, images/product-8.webp 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)">
                     <img class="product-card__image" src="images/product-8.jpg" alt="Наушники проводные" srcset="images/product-8-100.jpg 100w, images/product-8.jpg 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="150" loading="lazy">
+                </picture>
                     <h3 class="product-card__title">Наушники проводные</h3>
                     <p class="product-card__description">Обычные проводные наушники (база).</p>
                     <p class="product-card__price">Цена: 2000 руб.</p>
@@ -156,8 +173,11 @@
                         <a class="button button--secondary" href="order.html" aria-label="Оформить заявку: Наушники проводные">Оформить</a>
                 </div>
                 </article>
-                <article class="product-card">
+                <article class="product-card" data-category="accessory" data-price="1000">
+                    <picture>
+                    <source type="image/webp" srcset="images/product-9-100.webp 100w, images/product-9.webp 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)">
                     <img class="product-card__image" src="images/product-9.jpg" alt="USB-флешка" srcset="images/product-9-100.jpg 100w, images/product-9.jpg 200w" sizes="(min-width: 1280px) 254px, (min-width: 1024px) calc((100vw - 420px) / 2), (min-width: 640px) calc((100vw - 116px) / 2), calc(100vw - 66px)" width="200" height="133" loading="lazy">
+                </picture>
                     <h3 class="product-card__title">Флешка (рабочая)</h3>
                     <p class="product-card__description">Абсолютно точно функционирующее устройство хранения информации.</p>
                     <p class="product-card__price">Цена: 1000 руб.</p>
